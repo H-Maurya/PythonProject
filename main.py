@@ -87,18 +87,17 @@ def get_command():
             print(e)
             speak("Could you please say it again")
             # if spoken nothing return none
-            return "None"
+            return None
 
 
 # getting a valid command
 def get_not_empty_command():
     message = get_command()
-    if "None" in message:
-        # if message empty retake message
+    # while message is null retake input
+    while message is None:
         message = get_command()
-    else:
-        # else return
-        return message
+    # if message becomes not null return
+    return message
 
 
 # wikipedia command
@@ -118,7 +117,7 @@ def send_email():
     # email receivers name input
     receiver = get_not_empty_command()
     # dictionary containing predefined emails
-    receiver_data = {"mihir": "mihirwaykole1703@yahoo.com"}
+    receiver_data = {"me": "mihirwaykole1703@yahoo.com"}
     if receiver in receiver_data:
         speak("Tell me what message to send")
         # message to send input
